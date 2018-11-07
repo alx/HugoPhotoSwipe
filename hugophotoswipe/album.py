@@ -201,8 +201,7 @@ class Album(object):
             with open(album_file, 'r') as fid:
                 data.update(yaml.safe_load(fid))
         else:
-            print("Skipping non-album directory: %s" % album_dir)
-            return None
+            album.name = album_dir
         album = cls(**data)
         album.cover_path = os.path.join(settings.output_dir, album.name, 
                 settings.cover_filename)
